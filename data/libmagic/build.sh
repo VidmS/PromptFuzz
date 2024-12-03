@@ -112,13 +112,13 @@ function build_oss_fuzz() {
 
     $CXX $CXXFLAGS -std=c++11 -Isrc/ \
         $SRC/libmagic/magic_fuzzer.cc -o $OUT/magic_fuzzer \
-        $LIB_FUZZING_ENGINE ./src/.libs/libmagic.a -L$INSTALL_DIR/lib -lz -lzstd -llz4 -lbz2 -lzma
+        $LIB_FUZZING_ENGINE ./src/.libs/libmagic.a -L$INSTALL_DIR/lib -l:libz.a -l:liblz4.a -l:libbz2.a -l:liblzma.a -l:libzstd.a
     $CXX $CXXFLAGS -std=c++11 -Isrc/ \
         $SRC/libmagic/magic_fuzzer_loaddb.cc -o $OUT/magic_fuzzer_loaddb \
-        $LIB_FUZZING_ENGINE ./src/.libs/libmagic.a -L$INSTALL_DIR/lib -lz -lzstd -llz4 -lbz2 -lzma
+        $LIB_FUZZING_ENGINE ./src/.libs/libmagic.a -L$INSTALL_DIR/lib -l:libz.a -l:liblz4.a -l:libbz2.a -l:liblzma.a -l:libzstd.a
     $CXX $CXXFLAGS -std=c++11 -Isrc/ \
         $SRC/libmagic/magic_fuzzer_fd.cc -o $OUT/magic_fuzzer_fd \
-        $LIB_FUZZING_ENGINE ./src/.libs/libmagic.a -L$INSTALL_DIR/lib -lz -lzstd -llz4 -lbz2 -lzma
+        $LIB_FUZZING_ENGINE ./src/.libs/libmagic.a -L$INSTALL_DIR/lib -l:libz.a -l:liblz4.a -l:libbz2.a -l:liblzma.a -l:libzstd.a
     cp $SRC/libmagic/build/magic/magic.mgc $OUT/magic.mgc
 }
 
